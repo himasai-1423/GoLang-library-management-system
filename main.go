@@ -11,10 +11,8 @@ func main() {
 	defer CloseDB(client, ctx, cancel)
 	Ping(client, ctx)
 
-	fmt.Println("\nWelcome to Library Management System!")
-
 	for {
-		choice := userChoice()
+		choice, userName := userChoice()
 
 		switch choice {
 		case 1:
@@ -24,12 +22,18 @@ func main() {
 		case 3:
 			availableBooks()
 		default:
-			leaving()
+			leaving(userName)
 		}
 	}
 }
 
-func userChoice() int {
+func userChoice() (int, string) {
+	fmt.Println("\nWelcome to Library Management System!")
+
+	fmt.Println("\n\nPlease enter your name: ")
+	var userName string
+	fmt.Scan(&userName)
+
 	fmt.Println("\nChoose any option:-")
 	fmt.Println("1. Rent a book ")
 	fmt.Println("2. Return a book")
@@ -38,7 +42,7 @@ func userChoice() int {
 
 	var choice int
 	fmt.Scan(&choice)
-	return choice
+	return choice, userName
 }
 
 func rentBook() {
@@ -53,6 +57,6 @@ func availableBooks() {
 
 }
 
-func leaving() {
-
+func leaving(userName string) {
+	fmt.Printf("Thank you %v for visiting", userName)
 }
