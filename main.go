@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	// "go.mongodb.org/mongo-driver/bson"
 )
 
 func main() {
@@ -14,45 +13,9 @@ func main() {
 	defer CloseDB(client, ctx, cancel)
 	Ping(client, ctx)
 
+	//Adding data
 	// coll := client.Database("ABCLibrary").Collection("Books")
-
-	// insertRes, err := coll.InsertOne(ctx, bson.D{
-	// 	{"name", "One Piece"},
-	// 	{"author", "Eiichiro Oda"},
-	// 	{"bookId", 2},
-	// 	{"genre", bson.A{"Fantasy", "Action", "Adventure", "History"}},
-	// 	{"quantity", 12},
-	// })
-
-	// insertRes, err := coll.InsertMany(ctx, []interface{}{
-	// 	bson.D{
-	// 		{"name", "Attack On Titan"},
-	// 		{"author", "Hajime Isayam"},
-	// 		{"bookId", 3},
-	// 		{"genre", bson.A{"Fantasy", "Action", "Adventure", "History"}},
-	// 		{"quantity", 5},
-	// 	},
-	// 	bson.D{
-	// 		{"name", "Harry Potter"},
-	// 		{"author", "J.K. Rowling"},
-	// 		{"bookId", 4},
-	// 		{"genre", bson.A{"Fantasy", "Magic", "Adventure"}},
-	// 		{"quantity", 12},
-	// 	},
-	// 	bson.D{
-	// 		{"name", "Iron Man"},
-	// 		{"author", "Stan Lee"},
-	// 		{"bookId", 5},
-	// 		{"genre", bson.A{"Sci-Fi", "Action"}},
-	// 		{"quantity", 12},
-	// 	},
-	// })
-
-	// if err != nil {
-	// 	panic(err)
-	// }
-
-	// fmt.Println(insertRes.InsertedIDs)
+	// AddData(coll, ctx)
 
 	for {
 		choice, userName := userChoice()
@@ -89,6 +52,7 @@ func userChoice() (int, string) {
 }
 
 func rentBook() {
+
 	// call availableBooks
 	// check availability
 }
