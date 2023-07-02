@@ -22,7 +22,7 @@ func CloseDB(client *mongo.Client, ctx context.Context, cancel context.CancelFun
 }
 
 func Connect(uri string) (*mongo.Client, context.Context, context.CancelFunc, error) {
-	ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
+	ctx, cancel := context.WithTimeout(context.Background(), 100*time.Second)
 	client, err := mongo.Connect(ctx, options.Client().ApplyURI(uri))
 
 	return client, ctx, cancel, err

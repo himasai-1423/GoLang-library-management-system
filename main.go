@@ -5,7 +5,7 @@ import (
 )
 
 func main() {
-	//establishing connection
+	// # Establishing connection
 	client, ctx, cancel, err := Connect("mongodb+srv://borahimasaireddy:himu2003@cluster0.daxzqzv.mongodb.net/?retryWrites=true&w=majority")
 	if err != nil {
 		panic(err)
@@ -13,8 +13,8 @@ func main() {
 	defer CloseDB(client, ctx, cancel)
 	Ping(client, ctx)
 
-	//Adding data
-	// coll := client.Database("ABCLibrary").Collection("Books")
+	// # Adding data
+	coll := client.Database("ABCLibrary").Collection("Books")
 	// AddData(coll, ctx)
 
 	for {
@@ -26,7 +26,7 @@ func main() {
 		case 2:
 			returnBook()
 		case 3:
-			availableBooks()
+			BooksAvailable(coll, ctx)
 		default:
 			leaving(userName)
 		}
@@ -40,7 +40,8 @@ func userChoice() (int, string) {
 	var userName string
 	fmt.Scan(&userName)
 
-	fmt.Println("\nChoose any option:-")
+	fmt.Printf("\n Hello! %v,", userName)
+	fmt.Println("\nPlease choose any of the option below:-")
 	fmt.Println("1. Rent a book ")
 	fmt.Println("2. Return a book")
 	fmt.Println("3. Read a book ")
@@ -52,7 +53,6 @@ func userChoice() (int, string) {
 }
 
 func rentBook() {
-
 	// call availableBooks
 	// check availability
 }
@@ -60,10 +60,6 @@ func rentBook() {
 func returnBook() {
 	// take book
 	// call availableBooks
-}
-
-func availableBooks() {
-	// fetch books list
 }
 
 func leaving(userName string) {
