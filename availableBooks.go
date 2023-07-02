@@ -5,6 +5,7 @@ import (
 	"fmt"
 
 	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
@@ -23,6 +24,25 @@ func BooksAvailable(coll *mongo.Collection, ctx context.Context) {
 		if err = cursor.Decode(&bookList); err != nil {
 			panic(err)
 		}
-		fmt.Println(bookList)
+		PrintBookDetails(bookList)
 	}
+}
+
+func PrintBookDetails(book bson.M) {
+	bookId, _ := book["bookId"].(int32)
+	name, _ := book["name"].(string)
+	author, _ := book["author"].(string)
+	quantity, _ := book["quantity"].(int32)
+
+	fmt.Printf("Book Id: %v\n", bookId)
+	fmt.Printf("Book Name: %v\n", name)
+	fmt.Printf("Author: %v\n", author)
+	fmt.Printf("Quantity: %v\n", quantity)
+
+	if genreRegex, ok := book["genre"].(primitive.Regex); ok {
+		fmt.Println("Genre:", genreRegex.Pattern)
+	}
+
+	fmt.Println()
+
 }

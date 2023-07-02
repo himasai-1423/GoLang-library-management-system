@@ -10,11 +10,11 @@ import (
 
 func AddData(coll *mongo.Collection, ctx context.Context) {
 	insRes, err := coll.InsertOne(ctx, bson.D{
-		{Key: "name", Value: "One Piece"},
-		{Key: "author", Value: "Eiichiro Oda"},
-		{Key: "bookId", Value: 2},
-		{Key: "genre", Value: bson.A{"Fantasy", "Action", "Adventure", "History"}},
-		{Key: "quantity", Value: 12},
+		{Key: "name", Value: "A Song of Fire and Ice"},
+		{Key: "author", Value: "George R. R. Martin"},
+		{Key: "bookId", Value: 1},
+		{Key: "genre", Value: bson.A{"Fantasy", "Action", "Romance"}},
+		{Key: "quantity", Value: 3},
 	})
 	if err != nil {
 		panic(err)

@@ -22,7 +22,7 @@ func main() {
 
 		switch choice {
 		case 1:
-			rentBook()
+			RentBook(coll, ctx)
 		case 2:
 			returnBook()
 		case 3:
@@ -52,14 +52,10 @@ func userChoice() (int, string) {
 	return choice, userName
 }
 
-func rentBook() {
-	// call availableBooks
-	// check availability
-}
-
 func returnBook() {
 	// take book
 	// call availableBooks
+	fmt.Println("Hello world!")
 }
 
 func leaving(userName string) {
