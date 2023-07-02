@@ -17,18 +17,27 @@ func main() {
 	coll := client.Database("ABCLibrary").Collection("Books")
 	// AddData(coll, ctx)
 
-	for {
+	// indexModel := mongo.IndexModel{
+	// 	Keys: bson.D{{Key: "bookID", Value: 1}},
+	// }
+	// _, err = coll.Indexes().CreateOne(ctx, indexModel)
+	// if err != nil {
+	// 	panic(err)
+	// }
+	shouldExit := false
+	for !shouldExit {
 		choice, userName := userChoice()
 
 		switch choice {
 		case 1:
 			RentBook(coll, ctx)
 		case 2:
-			returnBook()
+			ReturnBook(coll, ctx)
 		case 3:
 			BooksAvailable(coll, ctx)
 		default:
 			leaving(userName)
+			shouldExit = true
 		}
 	}
 }
@@ -52,12 +61,6 @@ func userChoice() (int, string) {
 	return choice, userName
 }
 
-func returnBook() {
-	// take book
-	// call availableBooks
-	fmt.Println("Hello world!")
-}
-
 func leaving(userName string) {
-	fmt.Printf("Thank you %v for visiting", userName)
+	fmt.Printf("Thank you %v for visiting\n", userName)
 }
