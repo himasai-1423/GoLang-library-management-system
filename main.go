@@ -17,13 +17,6 @@ func main() {
 	coll := client.Database("ABCLibrary").Collection("Books")
 	// AddData(coll, ctx)
 
-	// indexModel := mongo.IndexModel{
-	// 	Keys: bson.D{{Key: "bookID", Value: 1}},
-	// }
-	// _, err = coll.Indexes().CreateOne(ctx, indexModel)
-	// if err != nil {
-	// 	panic(err)
-	// }
 	shouldExit := false
 	for !shouldExit {
 		choice, userName := userChoice()

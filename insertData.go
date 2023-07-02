@@ -51,4 +51,12 @@ func AddData(coll *mongo.Collection, ctx context.Context) {
 
 	fmt.Println(insertRes.InsertedIDs)
 
+	// indexModel := mongo.IndexModel{
+	// 	Keys: bson.D{{Key: "bookID", Value: 1}},
+	// }
+	// _, err = coll.Indexes().CreateOne(ctx, indexModel)
+	// if err != nil {
+	// 	panic(err)
+	// }
+
 }
