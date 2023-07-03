@@ -10,7 +10,7 @@ import (
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
-func RentBook(coll *mongo.Collection, ctx context.Context) {
+func RentBook(coll *mongo.Collection, ctx context.Context, userName string) {
 	BooksAvailable(coll, ctx)
 
 	var reqGenre string
@@ -25,6 +25,7 @@ func RentBook(coll *mongo.Collection, ctx context.Context) {
 
 	takeBook(coll, ctx, updateID)
 
+	fmt.Printf("Thank you %v for visiting!!\n", userName)
 }
 
 func checkGenre(coll *mongo.Collection, ctx context.Context, reqGenre string) {

@@ -8,7 +8,7 @@ import (
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
-func ReturnBook(coll *mongo.Collection, ctx context.Context) {
+func ReturnBook(coll *mongo.Collection, ctx context.Context, userName string) {
 	fmt.Println("Enter the ID of book you want to return:- ")
 	var returnID int32
 	fmt.Scan(&returnID)
@@ -40,6 +40,6 @@ func ReturnBook(coll *mongo.Collection, ctx context.Context) {
 		panic(err)
 	}
 
-	fmt.Printf("Thank you for returning %v book!!\n", book["name"])
+	fmt.Printf("Thank you %v for returning %v book!!\n", userName, book["name"])
 
 }

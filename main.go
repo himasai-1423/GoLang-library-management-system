@@ -25,13 +25,13 @@ func main() {
 
 		switch choice {
 		case 1:
-			controller.RentBook(coll, ctx)
+			controller.RentBook(coll, ctx, userName)
 		case 2:
-			controller.ReturnBook(coll, ctx)
+			controller.ReturnBook(coll, ctx, userName)
 		case 3:
 			controller.BooksAvailable(coll, ctx)
 		default:
-			leaving(userName)
+			Leaving(userName)
 			shouldExit = true
 		}
 	}
@@ -56,6 +56,6 @@ func userChoice() (int, string) {
 	return choice, userName
 }
 
-func leaving(userName string) {
+func Leaving(userName string) {
 	fmt.Printf("Thank you %v for visiting\n", userName)
 }
