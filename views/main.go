@@ -2,16 +2,18 @@ package main
 
 import (
 	"fmt"
+	controller "lib-mng-sys/controllers"
+	model "lib-mng-sys/models"
 )
 
 func main() {
 	// # Establishing connection
-	client, ctx, cancel, err := Connect("mongodb+srv://borahimasaireddy:himu2003@cluster0.daxzqzv.mongodb.net/?retryWrites=true&w=majority")
+	client, ctx, cancel, err := model.Connect("mongodb+srv://borahimasaireddy:himu2003@cluster0.daxzqzv.mongodb.net/?retryWrites=true&w=majority")
 	if err != nil {
 		panic(err)
 	}
-	defer CloseDB(client, ctx, cancel)
-	Ping(client, ctx)
+	defer model.CloseDB(client, ctx, cancel)
+	model.Ping(client, ctx)
 
 	// # Adding data
 	coll := client.Database("ABCLibrary").Collection("Books")
@@ -23,11 +25,11 @@ func main() {
 
 		switch choice {
 		case 1:
-			RentBook(coll, ctx)
+			controller.RentBook(coll, ctx)
 		case 2:
-			ReturnBook(coll, ctx)
+			controller.ReturnBook(coll, ctx)
 		case 3:
-			BooksAvailable(coll, ctx)
+			controller.BooksAvailable(coll, ctx)
 		default:
 			leaving(userName)
 			shouldExit = true
