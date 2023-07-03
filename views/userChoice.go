@@ -20,3 +20,7 @@ func UserChoice() (int, string) {
 	fmt.Scan(&choice)
 	return choice, userName
 }
+
+func Leaving(userName string) {
+	fmt.Printf("Thank you %v for visiting\n", userName)
+}
