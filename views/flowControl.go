@@ -2,15 +2,22 @@ package views
 
 import (
 	"context"
+	"fmt"
 	controller "lib-mng-sys/controllers"
 
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
 func FlowControl(coll *mongo.Collection, ctx context.Context) {
+	fmt.Println("\nWelcome to Library Management System!")
+
+	fmt.Println("\n\nPlease enter your name: ")
+	var userName string
+	fmt.Scan(&userName)
 	shouldExit := false
+
 	for !shouldExit {
-		choice, userName := UserChoice()
+		choice := UserChoice(userName)
 
 		switch choice {
 		case 1:

@@ -2,12 +2,7 @@ package views
 
 import "fmt"
 
-func UserChoice() (int, string) {
-	fmt.Println("\nWelcome to Library Management System!")
-
-	fmt.Println("\n\nPlease enter your name: ")
-	var userName string
-	fmt.Scan(&userName)
+func UserChoice(userName string) int {
 
 	fmt.Printf("\n Hello! %v,", userName)
 	fmt.Println("\nPlease choose any of the option below:-")
@@ -18,7 +13,7 @@ func UserChoice() (int, string) {
 
 	var choice int
 	fmt.Scan(&choice)
-	return choice, userName
+	return choice
 }
 
 func Leaving(userName string) {
