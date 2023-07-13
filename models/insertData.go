@@ -8,6 +8,9 @@ import (
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
+// TO DO now
+type BookData struct{}
+
 func AddData(coll *mongo.Collection, ctx context.Context) {
 	insRes, err := coll.InsertOne(ctx, bson.D{
 		{Key: "name", Value: "A Song of Fire and Ice"},
@@ -51,12 +54,6 @@ func AddData(coll *mongo.Collection, ctx context.Context) {
 
 	fmt.Println(insertRes.InsertedIDs)
 
-	indexModel := mongo.IndexModel{
-		Keys: bson.D{{Key: "bookID", Value: 1}},
-	}
-	_, err = coll.Indexes().CreateOne(ctx, indexModel)
-	if err != nil {
-		panic(err)
-	}
+	ensureIndex(coll)
 
 }

@@ -9,6 +9,7 @@ func UserChoice(userName string) int {
 	fmt.Println("1. Rent a book ")
 	fmt.Println("2. Return a book")
 	fmt.Println("3. Read a book ")
+	//add new book
 	fmt.Println("Any other key to exit")
 
 	var choice int
